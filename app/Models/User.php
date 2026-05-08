@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Concerns\HasUlids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -32,6 +33,12 @@ class User extends Authenticatable implements FilamentUser, HasAppAuthentication
     use InteractsWithAppAuthenticationRecovery;
     use InteractsWithEmailAuthentication;
     use Notifiable;
+
+    /** @return HasMany<Credential, $this> */
+    public function credentials(): HasMany
+    {
+        return $this->hasMany(Credential::class, 'user_id');
+    }
 
     /**
      * Get the attributes that should be cast.
