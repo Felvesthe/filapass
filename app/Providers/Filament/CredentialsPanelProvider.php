@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Providers\Filament;
 
 use App\Filament\Resources\Credentials\CredentialResource;
+use CraftForge\FilamentLanguageSwitcher\FilamentLanguageSwitcherPlugin;
 use Filament\Auth\MultiFactor\App\AppAuthentication;
 use Filament\Auth\MultiFactor\Email\EmailAuthentication;
 use Filament\Http\Middleware\Authenticate;
@@ -71,6 +72,10 @@ class CredentialsPanelProvider extends PanelProvider
                 AppAuthentication::make()
                     ->recoverable(),
                 EmailAuthentication::make(),
+            ])
+            ->plugins([
+                FilamentLanguageSwitcherPlugin::make()
+                    ->locales(['en', 'pl']),
             ]);
     }
 }
