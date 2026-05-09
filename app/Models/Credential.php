@@ -43,6 +43,8 @@ class Credential extends Model
     protected function casts(): array
     {
         return [
+            'login' => 'encrypted',
+            'email' => 'encrypted',
             'password' => 'encrypted',
         ];
     }
