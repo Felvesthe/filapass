@@ -32,6 +32,7 @@ class CredentialsPanelProvider extends PanelProvider
             ->default()
             ->id('credentials')
             ->path('')
+            ->viteTheme('resources/css/filament/credentials/theme.css')
             ->login()
             ->registration()
             ->passwordReset()
