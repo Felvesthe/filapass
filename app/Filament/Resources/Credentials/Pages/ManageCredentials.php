@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Filament\Resources\Credentials\Pages;
 
 use App\Filament\Resources\Credentials\CredentialResource;
+use App\Filament\Resources\Credentials\Widgets\CredentialOverview;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ManageRecords;
 use Illuminate\Auth\AuthenticationException;
@@ -28,6 +29,13 @@ class ManageCredentials extends ManageRecords
 
                     return $data;
                 }),
+        ];
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            CredentialOverview::class,
         ];
     }
 }
