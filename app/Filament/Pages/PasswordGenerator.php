@@ -26,6 +26,8 @@ class PasswordGenerator extends Page
 
     protected static string | BackedEnum | null $navigationIcon = Heroicon::OutlinedKey;
 
+    protected static ?int $navigationSort = 2;
+
     /** @var array<int, string> | null */
     public ?array $passwordContaining = [];
 
