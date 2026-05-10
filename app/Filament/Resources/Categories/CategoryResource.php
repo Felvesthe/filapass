@@ -44,7 +44,9 @@ class CategoryResource extends Resource
         return $schema
             ->components([
                 TextInput::make('name')
-                    ->required(),
+                    ->label(Str::ucfirst(__('validation.attributes.name')))
+                    ->required()
+                    ->unique(),
             ])
             ->columns(1);
     }
