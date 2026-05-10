@@ -103,7 +103,7 @@ class CredentialResource extends Resource
                     ->sortable()
                     ->searchable()
                     ->limit(24)
-                    ->default(__('No Content')),
+                    ->placeholder(__('No Content')),
 
                 TextColumn::make('login')
                     ->label(Str::ucfirst(__('validation.attributes.username')))
@@ -111,7 +111,7 @@ class CredentialResource extends Resource
                     ->sortable()
                     ->searchable()
                     ->limit(24)
-                    ->default(__('No Content')),
+                    ->placeholder(__('No Content')),
 
                 TextColumn::make('email')
                     ->label(Str::ucfirst(__('validation.attributes.email')))
@@ -119,7 +119,7 @@ class CredentialResource extends Resource
                     ->sortable()
                     ->searchable()
                     ->limit(42)
-                    ->default(__('No Content')),
+                    ->placeholder(__('No Content')),
 
                 TextColumn::make('password')
                     ->label(Str::ucfirst(__('validation.attributes.password')))
@@ -135,7 +135,7 @@ class CredentialResource extends Resource
                     ->searchable()
                     ->limit(24)
                     ->toggleable()
-                    ->default(__('No Content')),
+                    ->placeholder(__('No Content')),
 
                 TextColumn::make('category.name')
                     ->label(trans_choice('Category', 1))
