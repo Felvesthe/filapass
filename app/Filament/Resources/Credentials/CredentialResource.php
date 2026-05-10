@@ -67,7 +67,7 @@ class CredentialResource extends Resource
                     ->label(Str::ucfirst(__('validation.attributes.password')))
                     ->copyable()
                     ->regeneratePassword(notify: false)
-                    ->maxLength(16)
+                    ->newPasswordLength(16)
                     ->required(),
 
                 TextInput::make('url')
