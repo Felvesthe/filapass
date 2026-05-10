@@ -123,8 +123,9 @@ class CredentialResource extends Resource
 
                 TextColumn::make('password')
                     ->label(Str::ucfirst(__('validation.attributes.password')))
-                    ->formatStateUsing(fn (): string => '••••••••••••')
-                    ->copyable(),
+                    ->copyable()
+                    ->copyableState(fn (string $state) => $state)
+                    ->formatStateUsing(fn (): string => '••••••••••••'),
 
                 TextColumn::make('url')
                     ->label(__('credentials.url_address'))
