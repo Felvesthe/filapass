@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Filament\Resources\Credentials;
 
+use App\Filament\Resources\Categories\CategoryResource;
 use App\Filament\Resources\Credentials\Pages\ManageCredentials;
 use App\Models\Credential;
 use BackedEnum;
@@ -83,7 +84,8 @@ class CredentialResource extends Resource
                     )
                     ->native(false)
                     ->searchable()
-                    ->preload(),
+                    ->preload()
+                    ->createOptionForm(fn (Schema $schema): Schema => CategoryResource::form($schema)),
             ]);
     }
 
