@@ -80,7 +80,7 @@ class CredentialResource extends Resource
                     ->relationship(
                         name: 'category',
                         titleAttribute: 'name',
-                        modifyQueryUsing: fn (Builder $query): Builder => $query->limit(5)
+                        modifyQueryUsing: fn (Builder $query): Builder => $query->where('user_id', auth()->user()->id)->limit(5)
                     )
                     ->native(false)
                     ->searchable()
@@ -147,7 +147,11 @@ class CredentialResource extends Resource
             ->filters([
                 SelectFilter::make('category')
                     ->label(trans_choice('Category', 1))
-                    ->relationship('category', 'name'),
+                    ->relationship(
+                        name: 'category',
+                        titleAttribute: 'name',
+                        modifyQueryUsing: fn (Builder $query): Builder => $query->where('user_id', auth()->user()->id),
+                    ),
                 TrashedFilter::make(),
             ])
             ->recordActions([
