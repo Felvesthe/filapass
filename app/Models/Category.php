@@ -17,6 +17,15 @@ class Category extends Model
     /** @use HasFactory<CategoryFactory> */
     use HasFactory;
 
+    protected static function booted(): void
+    {
+        static::creating(function (Category $category) {
+            if (auth()->user()) {
+                $category->user_id = auth()->user()->id;
+            }
+        });
+    }
+
     /** @return HasMany<Credential, $this> */
     public function credentials(): HasMany
     {
