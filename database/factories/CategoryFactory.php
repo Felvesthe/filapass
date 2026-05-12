@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Database\Factories;
 
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -23,6 +24,11 @@ class CategoryFactory extends Factory
     {
         return [
             'name' => $this->faker->unique()->word(),
+            'user_id' => User::query()
+                ->where('email', 'test@localhost')
+                ->first()
+                ->id
+                ?? User::factory(),
         ];
     }
 }

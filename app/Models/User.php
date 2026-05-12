@@ -40,6 +40,12 @@ class User extends Authenticatable implements FilamentUser, HasAppAuthentication
         return $this->hasMany(Credential::class, 'user_id');
     }
 
+    /** @return HasMany<Category, $this> */
+    public function categories(): HasMany
+    {
+        return $this->hasMany(Category::class, 'user_id');
+    }
+
     /**
      * Get the attributes that should be cast.
      *

@@ -15,16 +15,21 @@ class CredentialOverview extends StatsOverviewWidget
         return [
             Stat::make(
                 __('credentials.stats.active_credentials'),
-                Credential::count()
+                Credential::query()
+                    ->where('user_id', auth()->user()?->id)
+                    ->count()
             ),
             Stat::make(
                 __('credentials.stats.credentials_trash'),
                 Credential::onlyTrashed()
+                    ->where('user_id', auth()->user()?->id)
                     ->count()
             ),
             Stat::make(
                 __('credentials.stats.credentials_wo_category'),
-                Credential::where('category_id', null)
+                Credential::query()
+                    ->where('category_id', null)
+                    ->where('user_id', auth()->user()?->id)
                     ->count()
             ),
         ];
